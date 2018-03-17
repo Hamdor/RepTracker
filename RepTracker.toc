@@ -1,0 +1,8 @@
+## Interface: 70300
+## Title: RepTracker
+## Notes: Adds several status bars for different factions to your GUI.
+## Author: Hamdor
+## Version: 0.1
+## SavedVariable: RepTracker_GeneralSettings
+## SavedVariablesPerCharacter: RepTracker_Factions
+RepTracker.lua
