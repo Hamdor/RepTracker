@@ -1,7 +1,5 @@
 local f = CreateFrame("Frame", nil, UIParent)
 local events = {}
-local bars = {}
-
 local start_x = 25
 local start_y = -100
 
@@ -90,6 +88,10 @@ BarManager = {
 
   reset = function(self)
     self.cur_bar = 0
+    -- Hide all bars.
+    for k,v in pairs(self.bars) do
+      RegisterStateDriver(v, "visibility", "hide")
+    end
   end
 }
 
@@ -154,9 +156,11 @@ local function CommandHandler(msg, editbox)
   if cmd == "add" and args ~= "" then
     print("adding " .. args)
     RepTracker_Factions[string.lower(args)] = true
+    events:UPDATE_FACTION()
   elseif cmd == "remove" and args ~= "" then
     print("removing " .. args)
     RepTracker_Factions[string.lower(args)] = false
+    events:UPDATE_FACTION()
   elseif cmd == "enable" then
     RepTracker_GeneralSettings.enabled = true
   elseif cmd == "disable" then
