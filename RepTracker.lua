@@ -73,6 +73,11 @@ BarManager = {
   update = function(self, str, min, max, current, standingId)
     if show_faction(str) ~= true then return end
     i = self.cur_bar
+    if standingId == 8 then
+      -- Show full bar on Exalted (21000/21000).
+      current = 21000
+      max = 21000
+    end
     self.bars[i]:SetMinMaxValues(min, max)
     self.bars[i]:SetValue(current)
     self.bars[i]:SetStatusBarColor(get_standing_color(standingId))
