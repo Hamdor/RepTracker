@@ -38,7 +38,7 @@ local function show_faction(name)
 end
 
 -- Manages all bars.
-BarManager = {
+local BarManager = {
   ref_pos = "TOPLEFT",
   next_x = start_x,
   next_y = start_y,
@@ -49,7 +49,7 @@ BarManager = {
   -- @param width width of a bar
   -- @param height height of a bar
   init = function(self, width, height)
-    for i=0, 10 do
+    for i=0, 20 do
       bar = CreateFrame("StatusBar", nil, UIParent)
       bar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
       bar:SetPoint(self.ref_pos, self.next_x, self.next_y)
@@ -102,7 +102,7 @@ BarManager = {
 
 --- Handler for ADDON_LOADED event (on login or UI reload)
 function events:ADDON_LOADED(name)
-  if name ~= "RepTracker" then return end
+  if name ~= "reptracker" then return end
   if RepTracker_GeneralSettings then
     RepTracker_GeneralSettings = RepTracker_GeneralSettings
   else
