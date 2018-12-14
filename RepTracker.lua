@@ -102,7 +102,7 @@ local BarManager = {
 
 --- Handler for ADDON_LOADED event (on login or UI reload)
 function events:ADDON_LOADED(name)
-  if name ~= "reptracker" then return end
+  if string.lower(name) ~= "reptracker" then return end
   if RepTracker_GeneralSettings then
     RepTracker_GeneralSettings = RepTracker_GeneralSettings
   else
@@ -124,7 +124,7 @@ end
 
 --- Handler for PLAYER_LOGOUT event (logout)
 function events:PLAYER_LOGOUT(name)
-  if name ~= "RepTracker" then return end
+  if string.lower(name) ~= "reptracker" then return end
   RepTracker_GeneralSettings = RepTracker_GeneralSettings
   RepTracker_Factions = RepTracker_Factions
 end
